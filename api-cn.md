@@ -410,14 +410,17 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
   </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回code（0：成功  非0：失败）</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回消息</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>null</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
                </tbody>
               </table>
+	      
 ##### B端mq对接
+
 - B端MQ对接
     - 说明
     <br>消息队列MQ主要存放B端子账号进行期货交易时产生的通知类消息。B端在接入时，MQ对应的配置需与交易所对接。</br>
    - 通知类消息说明
    <br>消息格式：</br>
+   
     ``` json
-    {"message_type":6001,"id":154804153000,"account_id":24,"contract_id":100,"side":1,"margin_rate":"50000000000000000","trigger_type":1}
+  {"message_type":6001,"id":154804153000,"account_id":24,"contract_id":100,"side":1,"margin_rate":"50000000000000000","trigger_type":1}
       message_type 消息类型，6001：通知类消息
       id           消息ID
       account_id   子用户ID
@@ -428,6 +431,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
     ```
    - MQ配置说明
    <br>以下是MQ消费配置展示列</br>
+   
    ``` java
     # 消费组ID
     group-id: GID_broker_test
@@ -444,6 +448,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
     # 消息标签
     tags:notice
    ```
+   
     - RocketMQ参考url
    
     https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV
