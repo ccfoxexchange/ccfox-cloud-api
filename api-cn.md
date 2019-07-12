@@ -66,7 +66,7 @@
 #### 对接交易页面前端
 
 1. 先在APP登录好，得到token，
-2. 然后在跳转交易页前将token存入localstorage(键值token) 
+2. 然后在跳转交易页前将token代入url(http://mcloudtest.ccfox.com/?token=cf6b5c94-4041-466f-8df5-0ddb4c6b6ce7) 
 
 所有接口都需要在header里添加apiKey，apiExpires，signature三个参数
 
