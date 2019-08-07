@@ -254,7 +254,6 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 
 
 ## 子账号注册
-<a id=子账号注册> </a>
 
 ### 基本信息
 
@@ -263,44 +262,45 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 **Method：** POST
 
 **接口描述：**
-<p>校验：<br>
-&nbsp; &nbsp; 签名校验，apikey 权限校验，用户组是否属于券商校验，子账号重复提交注册校验，是否已注册校验，注册上线阈值校验</p>
 
+校验：
+    签名校验，apikey 权限校验，用户组是否属于券商校验，子账号重复提交注册校验，是否已注册校验，注册上线阈值校验
 
-* 请求参数
+### 请求参数
+
 **Headers**
 
-| 参数名称  | 参数值  |  是否必须 | 示例  | 备注  |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| Content-Type  |  application/json | 是  |   |   |
-| signature  |  1dec55ac42478858d322cf841f22522bb47752bbd5d330adbe84db9cf5854733 | 是  |  1dec55ac42478858d322cf841f22522bb47752bbd5d330adbe84db9cf5854733 |  签名，生成方式：sha256对请求body参数加密（对外生成示例文档询问技术人员索要） |
-| apiKey  |  61ba5fc3-2384-472e-8712-e5f83b358815 | 是  |  61ba5fc3-2384-472e-8712-e5f83b358815 |  API访问密钥：每个券商对应接口的标识（券商申请的apiKey） |
-| apiExpires  |  1561708654079 | 是  |  1561708654079 |  API此次访问过期时间,60s以内（时间戳：毫秒） |
-| UNIQUE  |  XXXX | 是  |   |  uuid, 每次申请都需不一样的值,用于防重复提交 |
+| 参数名称     | 参数值                                                       | 是否必须 | 示例                                                         | 备注                                                         |
+| ------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Content-Type | application/json                                             | 是       |                                                              |                                                              |
+| signature    | 1dec55ac42478858d322cf841f22522bb47752bbd5d330adbe84db9cf5854733 | 是       | 1dec55ac42478858d322cf841f22522bb47752bbd5d330adbe84db9cf5854733 | 签名，生成方式：sha256对请求body参数加密（对外生成示例文档询问技术人员索要） |
+| apiKey       | 61ba5fc3-2384-472e-8712-e5f83b358815                         | 是       | 61ba5fc3-2384-472e-8712-e5f83b358815                         | API访问密钥：每个券商对应接口的标识（券商申请的apiKey）      |
+| apiExpires   | 1561708654079                                                | 是       | 1561708654079                                                | API此次访问过期时间（时间戳：毫秒）                          |
+| UNIQUE       | XXXX                                                         | 是       |                                                              | uuid, 每次申请都需不一样的值,用于防重复提交                  |
+
 **Body**
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> groupId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">分组ID</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> areaCode</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区号   示例：+86（areaCode和phone必须一起传）</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> sonUserName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号名称</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> sonPassword</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">密码：MD5加密</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> phone</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">手机号：phone和email二传一或者都传</span></td><td key=5></td></tr><tr key=0-5><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> email</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">邮箱：phone和email二传一或者都传</span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称        | 类型   | 是否必须 | 默认值 | 备注                         | 其他信息 |
+| ----------- | ------ | -------- | ------ | ---------------------------- | -------- |
+| groupId     | number | 必须     |        | 分组ID                       |          |
+| areaCode    | string | 非必须   |        | 区号   示例：+86             |          |
+| sonUserName | string | 必须     |        | 账号名称（限定15位纯数字）   |          |
+| sonPassword | string | 必须     |        | 密码：MD5加密32位小写        |          |
+| phone       | string | 非必须   |        | 手机号：传了手机号区号必须传 |          |
+| email       | string | 非必须   |        | 邮箱                         |          |
 
-* 返回数据
+### 返回数据
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回code（0：成功  非0：失败）</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回消息</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>null</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称 | 类型   | 是否必须 | 默认值 | 备注                           | 其他信息 |
+| ---- | ------ | -------- | ------ | ------------------------------ | -------- |
+| code | number | 必须     |        | 返回code（0：成功  非0：失败） |          |
+| msg  | string | 必须     |        | 返回消息                       |          |
+| data | null   | 必须     |        |                                |          |
 
-##### 子账号登录
-<a id=子账号登录> </a>
+## 子账号登录
+
+
+
 ### 基本信息
 
 **Path：** /api/v1/broker/loginSon
@@ -309,37 +309,178 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 
 **接口描述：**
 
+### 请求参数
 
-* 请求参数
 **Headers**
 
-| 参数名称  | 参数值  |  是否必须 | 示例  | 备注  |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| Content-Type  |  application/json | 是  |   |   |
 **Body**
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> sonUserName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号名称</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> sonPassword</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号密码（MD5加密）</span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称        | 类型   | 是否必须 | 默认值 | 备注                      | 其他信息 |
+| ----------- | ------ | -------- | ------ | ------------------------- | -------- |
+| sonUserName | string | 必须     |        | 账号名称                  |          |
+| sonPassword | string | 必须     |        | 账号密码：MD5加密32位小写 |          |
 
-* 返回数据
+### 返回数据
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回code（0：成功  非0：失败）</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回消息</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> access_token</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">token</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> token_type</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">token类型</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> refresh_token</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">刷新token</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> expires_in</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">有效时间</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> scope</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称             | 类型   | 是否必须 | 默认值 | 备注                           | 其他信息 |
+| ---------------- | ------ | -------- | ------ | ------------------------------ | -------- |
+| code             | number | 必须     |        | 返回code（0：成功  非0：失败） |          |
+| msg              | string | 必须     |        | 返回消息                       |          |
+| data             | object | 必须     |        |                                |          |
+| ├─ access_token  | string | 必须     |        | token                          |          |
+| ├─ token_type    | string | 必须     |        | token类型                      |          |
+| ├─ refresh_token | string | 必须     |        | 刷新token                      |          |
+| ├─ expires_in    | string | 必须     |        | 有效时间：毫秒为单位           |          |
+| ├─ scope         | string | 必须     |        |                                |          |
 
-##### 资产查询
-<a id=资产查询> </a>
+## 查询子账户期货历史委托
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryHisOrder
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例            | 备注                                                         |
+| -------- | -------- | --------------- | ------------------------------------------------------------ |
+| filter   | 是       | {"userId":+275} | 注意： 请求参数filter={"userId":+275}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"userId":275} 其中 userId（int）：用户ID， 必须 contractId（int）：交易对ID， 非必须 side（int）：上下页数, 非必须 startDate（long）：开始时间戳, 非必须 endDate（long）：结束时间戳, 非必须 pageNum（int）：当前页数, 非必须 pageSize（int）：页显示数量, 非必须 |
+
+### 返回数据
+
+| 名称               | 类型      | 是否必须 | 默认值 | 备注                         | 其他信息          |
+| ------------------ | --------- | -------- | ------ | ---------------------------- | ----------------- |
+| code               | number    | 非必须   |        |                              |                   |
+| msg                | string    | 非必须   |        |                              |                   |
+| data               | object [] | 非必须   |        |                              | item 类型: object |
+| ├─ applId          | number    | 必须     |        |                              |                   |
+| ├─ timestamp       | number    | 必须     |        | 委托时间                     |                   |
+| ├─ userId          | number    | 必须     |        | 用户ID                       |                   |
+| ├─ contractId      | number    | 必须     |        | 交易对ID                     |                   |
+| ├─ uuid            | string    | 必须     |        |                              |                   |
+| ├─ side            | number    | 必须     |        | 买卖方向，1买，-1卖          |                   |
+| ├─ price           | string    | 必须     |        | 委托价格                     |                   |
+| ├─ quantity        | string    | 必须     |        | 委托数量                     |                   |
+| ├─ orderType       | number    | 必须     |        | 委托类型                     |                   |
+| ├─ orderSubType    | number    | 必须     |        |                              |                   |
+| ├─ timeInForce     | number    | 必须     |        |                              |                   |
+| ├─ minimalQuantity | string    | 必须     |        |                              |                   |
+| ├─ stopPrice       | string    | 必须     |        |                              |                   |
+| ├─ stopCondition   | number    | 必须     |        |                              |                   |
+| ├─ orderStatus     | number    | 必须     |        | 委托状态                     |                   |
+| ├─ makerFeeRatio   | string    | 必须     |        |                              |                   |
+| ├─ takerFeeRatio   | string    | 必须     |        |                              |                   |
+| ├─ clOrderId       | string    | 必须     |        |                              |                   |
+| ├─ filledCurrency  | string    | 必须     |        | 成交金额                     |                   |
+| ├─ filledQuantity  | string    | 必须     |        | 成交数量                     |                   |
+| ├─canceledQuantity | string    | 必须     |        | 撤单数量                     |                   |
+| ├─ matchTime       | number    | 必须     |        |                              |                   |
+| ├─ positionEffect  | number    | 必须     |        | 开平标志，1开仓2平仓         |                   |
+| ├─ marginType      | number    | 必须     |        |                              |                   |
+| ├─ marginRate      | string    | 必须     |        |                              |                   |
+| ├─ fcOrderId       | string    | 必须     |        | 强平委托号，非空时为强平委托 |                   |
+| ├─ deltaPrice      | string    | 必须     |        |                              |                   |
+| ├─ frozenPrice     | string    | 必须     |        |                              |                   |
+
+## 查询子账户期货历史成交
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryHisMatch
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例            | 备注                                                         |
+| -------- | -------- | --------------- | ------------------------------------------------------------ |
+| filter   | 是       | {"userId":+275} | 注意： 请求参数filter={"userId":+275}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"userId":275} 其中 userId（int）：用户ID， 必须 contractId（int）：交易对ID， 非必须 side（int）：上下页数, 非必须 startDate（long）：开始时间戳, 非必须 endDate（long）：结束时间戳, 非必须 pageNum（int）：当前页数, 非必须 pageSize（int）：页显示数量, 非必须 |
+
+### 返回数据
+
+| 名称                 | 类型      | 是否必须 | 默认值 | 备注                | 其他信息          |
+| -------------------- | --------- | -------- | ------ | ------------------- | ----------------- |
+| code                 | number    | 非必须   |        |                     |                   |
+| msg                  | string    | 非必须   |        |                     |                   |
+| data                 | object [] | 非必须   |        |                     | item 类型: object |
+| ├─ applId            | number    | 必须     |        |                     |                   |
+| ├─ matchTime         | number    | 必须     |        | 成交时间            |                   |
+| ├─ contractId        | number    | 必须     |        | 交易对ID            |                   |
+| ├─ execId            | string    | 必须     |        | 成交号              |                   |
+| ├─ bidUserId         | number    | 必须     |        |                     |                   |
+| ├─ askUserId         | number    | 必须     |        |                     |                   |
+| ├─ bidOrderId        | string    | 必须     |        |                     |                   |
+| ├─ askOrderId        | string    | 必须     |        |                     |                   |
+| ├─ matchPrice        | string    | 必须     |        | 成交价              |                   |
+| ├─ matchQty          | string    | 必须     |        | 成交数量            |                   |
+| ├─ matchAmt          | string    | 必须     |        | 成交金额            |                   |
+| ├─ bidFee            | string    | 必须     |        |                     |                   |
+| ├─ askFee            | string    | 必须     |        |                     |                   |
+| ├─ takerSide         | number    | 必须     |        |                     |                   |
+| ├─ side              | number    | 必须     |        | 买卖方向，1买，-1卖 |                   |
+| ├─ updateTime        | number    | 必须     |        |                     |                   |
+| ├─ bidPositionEffect | number    | 必须     |        |                     |                   |
+| ├─ askPositionEffect | number    | 必须     |        |                     |                   |
+| ├─ bidMarginType     | number    | 必须     |        |                     |                   |
+| ├─ askMarginType     | number    | 必须     |        |                     |                   |
+| ├─ bidInitRate       | string    | 必须     |        |                     |                   |
+| ├─ askInitRate       | string    | 必须     |        |                     |                   |
+| ├─ bidMatchType      | number    | 必须     |        |                     |                   |
+| ├─ askMatchType      | number    | 必须     |        |                     |                   |
+
+## 查询转账状态
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryTransferStatus
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例                                            | 备注                                                         |
+| -------- | -------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| filter   | 是       | {"clientId":"31eb1f4b37204cc19bb1177cc5833cb3"} | 注意： 请求参数filter={"clientId":"31eb1f4b37204cc19bb1177cc5833cb3"}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"clientId":"31eb1f4b37204cc19bb1177cc5833cb3"} 其中 clientId（String）：接口请求方转账单号， 必须 |
+
+### 返回数据
+
+| 名称             | 类型   | 是否必须 | 默认值 | 备注                                                         | 其他信息 |
+| ---------------- | ------ | -------- | ------ | ------------------------------------------------------------ | -------- |
+| code             | number | 必须     |        |                                                              |          |
+| msg              | string | 必须     |        |                                                              |          |
+| data             | object | 必须     |        |                                                              |          |
+| ├─clientId       | string | 必须     |        | 转账单号                                                     |          |
+| ├─transferStatus | number | 必须     |        | 转账状态：10000, "转账成功",     10001, "转账失败",     10002, "转账中",     10003, "审核中",     10004, "审核失败"; |          |
+
+## 资产查询
+
+
+
 ### 基本信息
 
 **Path：** /api/v1/broker/queryAsset
@@ -347,35 +488,32 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 **Method：** GET
 
 **接口描述：**
-<p>注意：<br>
-&nbsp;&nbsp;&nbsp;&nbsp;请求参数filter=%7b%22applId%22%3a5%2c%22queryUserId%22%3a%22129%22%2c%22currencyId%22%3a1%7d，值为URLEcode编码，<br>
-&nbsp; &nbsp; 解码值为：{"applId":5,"queryUserId":"129","currencyId":1}<br>
-&nbsp; &nbsp; 其中<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="colour" style="color:rgb(0, 0, 0)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)">applId：值为5：我的钱包，2：期货钱包</span></span></span></span>， &nbsp; &nbsp; &nbsp; 必须<br>
-<span class="colour" style="color:rgb(0, 0, 0)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;queryUserId：用户ID, 查询此用户ID的余额， &nbsp; 必须</span></span></span></span><br>
-<span class="colour" style="color:rgb(0, 0, 0)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)"><span class="colour" style="color:rgb(24, 24, 24)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; currencyId：货币ID,</span></span></span></span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 非必须</p>
+
+### 请求参数
+
+| 参数名称 | 是否必须 | 示例                                            | 备注                                                         |
+| -------- | -------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| filter   | 是       | {"applId":5,"queryUserId":"129","currencyId":1} | 注意： 请求参数filter={"applId":5,"queryUserId":"129","currencyId":1}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"applId":5,"queryUserId":"129","currencyId":1} 其中 applId（int）：5：我的钱包，2：期货钱包， 必须 queryUserId（int）：用户ID, 查询此用户ID的余额， 必须 currencyId（int）：货币ID 非必须 |
+
+### 返回数据
+
+| 名称                | 类型      | 是否必须 | 默认值 | 备注           | 其他信息          |
+| ------------------- | --------- | -------- | ------ | -------------- | ----------------- |
+| code                | number    | 非必须   |        |                |                   |
+| msg                 | string    | 非必须   |        |                |                   |
+| data                | object [] | 非必须   |        |                | item 类型: object |
+| ├─ currencyId       | number    | 必须     |        | 币种ID         |                   |
+| ├─ available        | number    | 必须     |        | 可用金额       |                   |
+| ├─ totalBalance     | string    | 必须     |        | 总资产         |                   |
+| ├─ frozenForTrade   | string    | 必须     |        | 冻结资产       |                   |
+| ├─ initMargin       | string    | 必须     |        | 已占用保证金   |                   |
+| ├─ frozenInitMargin | string    | 必须     |        | 委托冻结保证金 |                   |
+| ├─ closeProfitLoss  | string    | 必须     |        | 已实现盈亏     |                   |
+
+## 转账
 
 
-* 请求参数
-**Query**
 
-| 参数名称  |  是否必须 | 示例  | 备注  |
-| ------------ | ------------ | ------------ | ------------ |
-| filter | 是  |  %7b%22applId%22%3a5%2c%22queryUserId%22%3a%22129%22%2c%22currencyId%22%3a1%7d |  applId：应用ID（默认为2）  queryUserId：用户ID  currencyId：币种ID |
-
-* 返回数据
-
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object []</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> currencyId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">币种ID</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> available</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">可用金额</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> totalBalance</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总资产</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> frozenForTrade</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">冻结资产</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> initMargin</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">已占用保证金</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> frozenInitMargin</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">委托冻结保证金</span></td><td key=5></td></tr><tr key=0-2-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> closeProfitLoss</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">已实现盈亏</span></td><td key=5></td></tr>
-               </tbody>
-              </table>
-
-##### 转账
-<a id=转账> </a>
 ### 基本信息
 
 **Path：** /api/v1/broker/transfer
@@ -383,37 +521,34 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 **Method：** POST
 
 **接口描述：**
-<p><span class="colour" style="color:rgb(0, 0, 0)"><span class="colour" style="color:rgb(85, 85, 85)"><span class="colour" style="color:rgb(85, 85, 85)"><span class="colour" style="color:rgb(85, 85, 85)">校验：</span></span></span></span><br>
-<span class="colour" style="color:rgb(0, 0, 0)"><span class="colour" style="color:rgb(85, 85, 85)"><span class="colour" style="color:rgb(85, 85, 85)"><span class="colour" style="color:rgb(85, 85, 85)">&nbsp; &nbsp; 签名校验，apikey 权限校验，数量校验，有效货币校验，有效应用ID校验（applID），转入转出用户属于券商校验，钱包余额与转账金额校验（只校验：5我的钱包）</span></span></span></span></p>
 
+校验：
+    签名校验，apikey 权限校验，数量校验，有效货币校验，有效应用ID校验（applID），转入转出用户属于券商校验，钱包余额与转账金额校验（只校验：5我的钱包）
 
-* 请求参数
+### 请求参数
+
 **Headers**
 
-| 参数名称  | 参数值  |  是否必须 | 示例  | 备注  |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| Content-Type  |  application/json | 是  |   |   |
 **Body**
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> fromUserId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">来源用户ID</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> fromApplId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">来源应用：默认传2</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> toUserId</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">接收用户ID</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> toApplId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">接收应用：默认传2</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> currencyId</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">币种ID</span></td><td key=5></td></tr><tr key=0-5><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> quantity</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">转账数量</span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称       | 类型   | 是否必须 | 默认值 | 备注                                                         | 其他信息 |
+| ---------- | ------ | -------- | ------ | ------------------------------------------------------------ | -------- |
+| fromUserId | number | 必须     |        | 来源用户ID                                                   |          |
+| fromApplId | number | 必须     |        | 来源应用：默认传2                                            |          |
+| toUserId   | string | 必须     |        | 接收用户ID                                                   |          |
+| toApplId   | number | 必须     |        | 接收应用：默认传2                                            |          |
+| currencyId | number | 必须     |        | 币种ID                                                       |          |
+| quantity   | string | 必须     |        | 转账数量：限制小数点后六位                                   |          |
+| clientId   | string | 非必须   |        | 转账单号：UUID生成唯一标识，32位数字和字母组成（请求不传服务端会自动生成） |          |
 
-* 返回数据
+### 返回数据
 
-<table>
-  <thead class="ant-table-thead">
-    <tr>
-      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
-    </tr>
-  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回code（0：成功  非0：失败）</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回消息</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>null</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr>
-               </tbody>
-              </table>
+| 名称 | 类型   | 是否必须 | 默认值 | 备注                           | 其他信息 |
+| ---- | ------ | -------- | ------ | ------------------------------ | -------- |
+| code | number | 必须     |        | 返回code（0：成功  非0：失败） |          |
+| msg  | string | 必须     |        | 返回消息                       |          |
+| data | object | 必须     |        | 转账单号（查询资产clientId值） |          |
+
 	      
 ##### B端mq对接
 
