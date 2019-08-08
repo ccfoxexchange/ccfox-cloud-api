@@ -89,8 +89,10 @@
 * 交易页面前端demo如下：
   * h5
     * 测试环境 http://mcloudtest.ccfox.com 
-    * 生产 https://mcloud.ccfox.com/#/
+    * 生产 https://mcloud.ccfox.com
   * web
+    * 测试环境 http://webcloudtest.ccfox.com
+    * 生产 https://webcloud.ccfox.com
 
 #### API接口
 
