@@ -587,23 +587,23 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
       trigger_type 类型，1：告警，2：强平，3：强减, 4: 强减对手方
     ```
    - MQ配置说明
-   <br>以下是MQ消费配置展示列</br>
+   <br>以下是MQ消费配置展示列,如果需要，联系我们</br>
    
    ``` java
     # 消费组ID
-    group-id: GID_broker_test
+    group-id: **********
     # 访问公钥匙
-    access-key: LTAIp7oxgDDLPZgT
+    access-key: **********
     # 访问私钥匙
-    secret-key: gj6pLuMKqqD8Ggc6kknb6IdStwL7RC
+    secret-key: **********
     # 访问url地址
-    namesrv-addr: http://MQ_INST_1626951952109175_Bayrxslo.mq-internet-access.mq-internet.aliyuncs.com:80
+    namesrv-addr: **********
     # 访问模式
     messageModel: CLUSTERING
     # 消息主题
-    topic: push-notice-test
+    topic: **********
     # 消息标签
-    tags:notice
+    tags:**********
    ```
    
     - RocketMQ参考url
