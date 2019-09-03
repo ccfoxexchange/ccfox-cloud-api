@@ -584,7 +584,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
       contract_id  合约ID
       side         买卖方向，1：买，-1：卖
       margin_rate  保证金率，值扩大了10^18次方，B端在使用时需缩小
-      trigger_type 类型，1：告警，2：强平，3：强减
+      trigger_type 类型，1：告警，2：强平，3：强减, 4: 强减对手方
     ```
    - MQ配置说明
    <br>以下是MQ消费配置展示列</br>
