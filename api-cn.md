@@ -365,49 +365,41 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 
 ### 请求参数
 
-**Headers**
-
-**Query**
-
-| 参数名称 | 是否必须 | 示例            | 备注                                                         |
-| -------- | -------- | --------------- | ------------------------------------------------------------ |
-| filter   | 是       | {"userId":+275} | 注意： 请求参数filter={"userId":+275}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"userId":275} 其中 userId（int）：用户ID， 必须 contractId（int）：交易对ID， 非必须 side（int）：上下页数, 非必须 startDate（long）：开始时间戳, 非必须 endDate（long）：结束时间戳, 非必须 pageNum（int）：当前页数, 非必须 pageSize（int）：页显示数量, 非必须 |
-
 ### 返回数据
 
-| 名称               | 类型      | 是否必须 | 默认值 | 备注                         | 其他信息          |
-| ------------------ | --------- | -------- | ------ | ---------------------------- | ----------------- |
-| code               | number    | 非必须   |        |                              |                   |
-| msg                | string    | 非必须   |        |                              |                   |
-| data               | object [] | 非必须   |        |                              | item 类型: object |
-| ├─ applId          | number    | 必须     |        |                              |                   |
-| ├─ timestamp       | number    | 必须     |        | 委托时间                     |                   |
-| ├─ userId          | number    | 必须     |        | 用户ID                       |                   |
-| ├─ contractId      | number    | 必须     |        | 交易对ID                     |                   |
-| ├─ uuid            | string    | 必须     |        |                              |                   |
-| ├─ side            | number    | 必须     |        | 买卖方向，1买，-1卖          |                   |
-| ├─ price           | string    | 必须     |        | 委托价格                     |                   |
-| ├─ quantity        | string    | 必须     |        | 委托数量                     |                   |
-| ├─ orderType       | number    | 必须     |        | 委托类型                     |                   |
-| ├─ orderSubType    | number    | 必须     |        |                              |                   |
-| ├─ timeInForce     | number    | 必须     |        |                              |                   |
-| ├─ minimalQuantity | string    | 必须     |        |                              |                   |
-| ├─ stopPrice       | string    | 必须     |        |                              |                   |
-| ├─ stopCondition   | number    | 必须     |        |                              |                   |
-| ├─ orderStatus     | number    | 必须     |        | 委托状态                     |                   |
-| ├─ makerFeeRatio   | string    | 必须     |        |                              |                   |
-| ├─ takerFeeRatio   | string    | 必须     |        |                              |                   |
-| ├─ clOrderId       | string    | 必须     |        |                              |                   |
-| ├─ filledCurrency  | string    | 必须     |        | 成交金额                     |                   |
-| ├─ filledQuantity  | string    | 必须     |        | 成交数量                     |                   |
-| ├─canceledQuantity | string    | 必须     |        | 撤单数量                     |                   |
-| ├─ matchTime       | number    | 必须     |        |                              |                   |
-| ├─ positionEffect  | number    | 必须     |        | 开平标志，1开仓2平仓         |                   |
-| ├─ marginType      | number    | 必须     |        |                              |                   |
-| ├─ marginRate      | string    | 必须     |        |                              |                   |
-| ├─ fcOrderId       | string    | 必须     |        | 强平委托号，非空时为强平委托 |                   |
-| ├─ deltaPrice      | string    | 必须     |        |                              |                   |
-| ├─ frozenPrice     | string    | 必须     |        |                              |                   |
+| 名称                | 类型      | 是否必须 | 默认值 | 备注                                                         | 其他信息          |
+| ------------------- | --------- | -------- | ------ | ------------------------------------------------------------ | ----------------- |
+| code                | number    | 非必须   |        |                                                              |                   |
+| msg                 | string    | 非必须   |        |                                                              |                   |
+| data                | object [] | 非必须   |        |                                                              | item 类型: object |
+| ├─ applId           | number    | 必须     |        | 2：期货                                                      |                   |
+| ├─ timestamp        | number    | 必须     |        | 委托时间                                                     |                   |
+| ├─ userId           | number    | 必须     |        | 用户ID                                                       |                   |
+| ├─ contractId       | number    | 必须     |        | 交易对ID                                                     |                   |
+| ├─ uuid             | string    | 必须     |        | 委托编号                                                     |                   |
+| ├─ side             | number    | 必须     |        | 买卖方向，1买，-1卖                                          |                   |
+| ├─ price            | string    | 必须     |        | 委托价格                                                     |                   |
+| ├─ quantity         | string    | 必须     |        | 委托数量                                                     |                   |
+| ├─ orderType        | number    | 必须     |        | 订单委托类型，1（限价），3（市价）                           |                   |
+| ├─ orderSubType     | number    | 必须     |        | 委托子类型 0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托） |                   |
+| ├─ timeInForce      | number    | 必须     |        | 订单有效时期类型：1（取消前有效），2（立即成交剩余撤销，未启用），3（全部成交否则撤销，未启用），4（五档成交剩余撤销，未启用），5（五档成交剩余转限价，未启用） |                   |
+| ├─ minimalQuantity  | string    | 必须     |        | 最小成交量                                                   |                   |
+| ├─ stopPrice        | string    | 必须     |        | 止损止盈价                                                   |                   |
+| ├─ stopCondition    | number    | 必须     |        | 止损止盈标志 1（止盈，未启用），2（止损，未启用），3（只减仓，未启用） |                   |
+| ├─ orderStatus      | number    | 必须     |        | 委托状态 0:未申报,1:正在申报,2:已申报未成交,3:部分成交,4:全部成交,5:部分撤单, 6:全部撤单7:撤单中,8:失效,11:缓存高于条件的委托,12:缓存低于条件的委托 |                   |
+| ├─ makerFeeRatio    | string    | 必须     |        | maker 手续费率                                               |                   |
+| ├─ takerFeeRatio    | string    | 必须     |        | taker 手续费率                                               |                   |
+| ├─ clOrderId        | string    | 必须     |        | 客户订单编号                                                 |                   |
+| ├─ filledCurrency   | string    | 必须     |        | 成交金额                                                     |                   |
+| ├─ filledQuantity   | string    | 必须     |        | 成交数量                                                     |                   |
+| ├─ canceledQuantity | string    | 必须     |        | 撤单数量                                                     |                   |
+| ├─ matchTime        | number    | 必须     |        | 成交时间                                                     |                   |
+| ├─ positionEffect   | number    | 必须     |        | 开平标志，1开仓2平仓                                         |                   |
+| ├─ marginType       | number    | 必须     |        | 保证金类型，1全仓，2逐仓                                     |                   |
+| ├─ marginRate       | string    | 必须     |        | 保证金率（倒数即为杠杠倍数）                                 |                   |
+| ├─ fcOrderId        | string    | 必须     |        | 强平委托号，非空时为强平委托                                 |                   |
+| ├─ deltaPrice       | string    | 必须     |        | 标记价与委托价之差                                           |                   |
+| ├─ frozenPrice      | string    | 必须     |        | 资金计算价格                                                 |                   |
 
 ## 查询子账户期货历史成交
 
@@ -427,41 +419,36 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 
 **Query**
 
-| 参数名称 | 是否必须 | 示例            | 备注                                                         |
-| -------- | -------- | --------------- | ------------------------------------------------------------ |
-| filter   | 是       | {"userId":+275} | 注意： 请求参数filter={"userId":+275}，值为URLEcode编码， 编码后 用大写 比如 : 需要 转换成 : 解码值为：{"userId":275} 其中 userId（int）：用户ID， 必须 contractId（int）：交易对ID， 非必须 side（int）：上下页数, 非必须 startDate（long）：开始时间戳, 非必须 endDate（long）：结束时间戳, 非必须 pageNum（int）：当前页数, 非必须 pageSize（int）：页显示数量, 非必须 |
-
 ### 返回数据
 
-| 名称                 | 类型      | 是否必须 | 默认值 | 备注                | 其他信息          |
-| -------------------- | --------- | -------- | ------ | ------------------- | ----------------- |
-| code                 | number    | 非必须   |        |                     |                   |
-| msg                  | string    | 非必须   |        |                     |                   |
-| data                 | object [] | 非必须   |        |                     | item 类型: object |
-| ├─ applId            | number    | 必须     |        |                     |                   |
-| ├─ matchTime         | number    | 必须     |        | 成交时间            |                   |
-| ├─ contractId        | number    | 必须     |        | 交易对ID            |                   |
-| ├─ execId            | string    | 必须     |        | 成交号              |                   |
-| ├─ bidUserId         | number    | 必须     |        |                     |                   |
-| ├─ askUserId         | number    | 必须     |        |                     |                   |
-| ├─ bidOrderId        | string    | 必须     |        |                     |                   |
-| ├─ askOrderId        | string    | 必须     |        |                     |                   |
-| ├─ matchPrice        | string    | 必须     |        | 成交价              |                   |
-| ├─ matchQty          | string    | 必须     |        | 成交数量            |                   |
-| ├─ matchAmt          | string    | 必须     |        | 成交金额            |                   |
-| ├─ bidFee            | string    | 必须     |        |                     |                   |
-| ├─ askFee            | string    | 必须     |        |                     |                   |
-| ├─ takerSide         | number    | 必须     |        |                     |                   |
-| ├─ side              | number    | 必须     |        | 买卖方向，1买，-1卖 |                   |
-| ├─ updateTime        | number    | 必须     |        |                     |                   |
-| ├─ bidPositionEffect | number    | 必须     |        |                     |                   |
-| ├─ askPositionEffect | number    | 必须     |        |                     |                   |
-| ├─ bidMarginType     | number    | 必须     |        |                     |                   |
-| ├─ askMarginType     | number    | 必须     |        |                     |                   |
-| ├─ bidInitRate       | string    | 必须     |        |                     |                   |
-| ├─ askInitRate       | string    | 必须     |        |                     |                   |
-| ├─ bidMatchType      | number    | 必须     |        |                     |                   |
-| ├─ askMatchType      | number    | 必须     |        |                     |                   |
+| 名称                 | 类型      | 是否必须 | 默认值 | 备注                                                         | 其他信息          |
+| -------------------- | --------- | -------- | ------ | ------------------------------------------------------------ | ----------------- |
+| code                 | number    | 非必须   |        |                                                              |                   |
+| msg                  | string    | 非必须   |        |                                                              |                   |
+| data                 | object [] | 非必须   |        |                                                              | item 类型: object |
+| ├─ applId            | number    | 必须     |        | 2：期货                                                      |                   |
+| ├─ matchTime         | number    | 必须     |        | 成交时间                                                     |                   |
+| ├─ contractId        | number    | 必须     |        | 交易对ID                                                     |                   |
+| ├─ execId            | string    | 必须     |        | 成交号                                                       |                   |
+| ├─ bidUserId         | number    | 必须     |        | 买方用户ID                                                   |                   |
+| ├─ askUserId         | number    | 必须     |        | 卖方用户ID                                                   |                   |
+| ├─ bidOrderId        | string    | 必须     |        | 买方委托号                                                   |                   |
+| ├─ askOrderId        | string    | 必须     |        | 卖方委托号                                                   |                   |
+| ├─ matchPrice        | string    | 必须     |        | 成交价                                                       |                   |
+| ├─ matchQty          | string    | 必须     |        | 成交数量                                                     |                   |
+| ├─ matchAmt          | string    | 必须     |        | 成交金额                                                     |                   |
+| ├─ bidFee            | string    | 必须     |        | 买方手续费                                                   |                   |
+| ├─ askFee            | string    | 必须     |        | 卖方手续费                                                   |                   |
+| ├─ takerSide         | number    | 必须     |        | 订单成交方向 1买，-1卖                                       |                   |
+| ├─ updateTime        | number    | 必须     |        | 最近更新时间                                                 |                   |
+| ├─ bidPositionEffect | number    | 必须     |        | 买方开平标志：1开仓2平仓                                     |                   |
+| ├─ askPositionEffect | number    | 必须     |        | 卖方开平标志：1开仓2平仓                                     |                   |
+| ├─ bidMarginType     | number    | 必须     |        | 买方保证金类型：1全仓，2逐仓                                 |                   |
+| ├─ askMarginType     | number    | 必须     |        | 卖方保证金类型：1全仓，2逐仓                                 |                   |
+| ├─ bidInitRate       | string    | 必须     |        | 买方初始保证金率                                             |                   |
+| ├─ askInitRate       | string    | 必须     |        | 卖方初始保证金率                                             |                   |
+| ├─ bidMatchType      | number    | 必须     |        | 买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减成交（盈利方） |                   |
+| ├─ askMatchType      | number    | 必须     |        | 卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减成交（盈利方） |                   |
 
 ## 查询转账状态
 
@@ -565,7 +552,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 | ---- | ------ | -------- | ------ | ------------------------------ | -------- |
 | code | number | 必须     |        | 返回code（0：成功  非0：失败） |          |
 | msg  | string | 必须     |        | 返回消息                       |          |
-| data | object | 必须     |        | 转账单号（查询资产clientId值） |          |
+| data | object | 必须     |        | 转账单号（用于查询转账状态clientId值） |          |
 
 	      
 ##### B端mq对接
