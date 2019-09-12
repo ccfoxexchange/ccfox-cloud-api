@@ -83,6 +83,7 @@
 
 1. 先在APP登录好，得到token，
 2. 然后在跳转交易页前将token代入url(http://mcloudtest.ccfox.com/?token=cf6b5c94-4041-466f-8df5-0ddb4c6b6ce7) 
+3. 国际化默认使用中文，可通过请求中添加参数切换语言，(http://mcloudtest.ccfox.com/?token=xxx&locale=en_US) locale可选值包含中文，英文，中文繁体，依次为zh_CN， en_US， zh_TW
 
 所有接口都需要在header里添加apiKey，apiExpires，signature三个参数
 
