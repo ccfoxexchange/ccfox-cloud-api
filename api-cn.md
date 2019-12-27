@@ -265,6 +265,87 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 
 币种接口： https://apitest.ccfox.com/future/queryCommonInfo
 
+### 基本信息
+
+**Path：** /future/queryCommonInfo
+
+**Method：** GET
+
+### 请求参数
+
+### 返回数据
+
+| 名称                     | 类型      | 是否必须 | 默认值 | 备注                                                     | 其他信息          |
+| ------------------------ | --------- | -------- | ------ | -------------------------------------------------------- | ----------------- |
+| currencyList             | object [] | 非必须   |        | 币种list                                                 | item 类型: object |
+| ├─ currencyId            | number    | 必须     |        | 币种id                                                   |                   |
+| ├─ symbol                | string    | 必须     |        | 币种名称                                                 |                   |
+| ├─ displayPrecision      | number    | 必须     |        | 页面显示位数                                             |                   |
+| contractList             | object [] | 非必须   |        | 期货合约list                                             | item 类型: object |
+| ├─ varietyId             | number    | 必须     |        | 品种ID                                                   |                   |
+| ├─ applId                | number    | 必须     |        | 1:现货，2：期货                                          |                   |
+| ├─ symbol                | string    | 必须     |        | 品种名称                                                 |                   |
+| ├─ priceTick             | number    | 必须     |        | 最小报价单位                                             |                   |
+| ├─ lotSize               | number    | 必须     |        | 最小交易单位                                             |                   |
+| ├─ takerFeeRatio         | number    | 必须     |        | Taker手续费率                                            |                   |
+| ├─ makerFeeRatio         | number    | 必须     |        | Maker手续费率                                            |                   |
+| ├─ limitMaxLevel         | number    | 必须     |        | 限价委托最大成交档位                                     |                   |
+| ├─ marketMaxLevel        | number    | 必须     |        | 市价委托最大成交档位                                     |                   |
+| ├─ maxNumOrders          | number    | 必须     |        | 用户最大挂单笔数                                         |                   |
+| ├─ priceLimitRate        | number    | 必须     |        | 涨跌停率                                                 |                   |
+| ├─ commodityId           | number    | 必须     |        | 商品币种ID                                               |                   |
+| ├─ currencyId            | number    | 必须     |        | 货币币种ID                                               |                   |
+| ├─ contractType          | number    | 必须     |        | 合约类型，1定期，2永续                                   |                   |
+| ├─ deliveryType          | number    | 必须     |        | 交割类型，1现金交割，2实物交割                           |                   |
+| ├─ deliveryPeriod        | number    | 必须     |        | 交割周期，1日2周3月                                      |                   |
+| ├─ contractSide          | number    | 必须     |        | 合约方向，1正向，2反向                                   |                   |
+| ├─ contractUnit          | number    | 必须     |        | 合约单位                                                 |                   |
+| ├─ posiLimit             | number    | 必须     |        | 持仓限额                                                 |                   |
+| ├─ orderLimit            | number    | 必须     |        | 委托限额                                                 |                   |
+| ├─ impactMarginNotional  | number    | 必须     |        | 保证金影响额                                             |                   |
+| ├─ fairBasisInterval     | number    | 必须     |        | 结算价基差计算间隔，单位秒                               |                   |
+| ├─ clearPriceInterval    | number    | 必须     |        | 结算价计算间隔，单位秒                                   |                   |
+| ├─ deliveryPriceInterval | number    | 必须     |        | 交割价计算间隔                                           |                   |
+| ├─ minMaintainRate       | number    | 必须     |        | 最小维持保证金率                                         |                   |
+| ├─ createTime            | number    | 必须     |        | 创建时间                                                 |                   |
+| ├─ enabled               | number    | 必须     |        | 是否启用                                                 |                   |
+| ├─ contract_status       | number    | 必须     |        | 1集合竞价，2连续交易，3交易暂停，4已摘牌，5未上市'       |                   |
+| ├─ futureContractList    | object [] | 必须     |        |                                                          | item 类型: object |
+| ├─ contractId            | number    | 必须     |        | 合约Id                                                   |                   |
+| ├─ applId                | number    | 必须     |        | 应用标识                                                 |                   |
+| ├─ symbol                | string    | 必须     |        | 合约名称                                                 |                   |
+| ├─ priceTick             | number    | 必须     |        | 最小报价单位                                             |                   |
+| ├─ lotSize               | number    | 必须     |        | 最小交易量单位                                           |                   |
+| ├─ takerFeeRatio         | number    | 必须     |        | Taker手续费率                                            |                   |
+| ├─ makerFeeRatio         | number    | 必须     |        | Maker手续费率                                            |                   |
+| ├─ limitMaxLevel         | number    | 必须     |        | 限价委托最大成交档位                                     |                   |
+| ├─ marketMaxLevel        | number    | 必须     |        | 市价委托最大成交档位                                     |                   |
+| ├─ maxNumOrders          | number    | 必须     |        | 用户最大挂单笔数                                         |                   |
+| ├─ priceLimitRate        | number    | 必须     |        | 涨跌停率                                                 |                   |
+| ├─ commodityId           | number    | 必须     |        | 商品币种ID                                               |                   |
+| ├─ currencyId            | number    | 必须     |        | 货币币种ID                                               |                   |
+| ├─ contractStatus        | number    | 必须     |        | 交易对状态:1集合竞价,2连续交易,3交易暂停,4已摘牌,5未上市 |                   |
+| ├─ listPrice             | number    | 必须     |        | 挂牌价格                                                 |                   |
+| ├─ listTime              | number    | 必须     |        | 上市时间                                                 |                   |
+| ├─ createTime            | number    | 必须     |        | 创建时间                                                 |                   |
+| ├─ contractType          | number    | 必须     |        | 合约类型，1定期，2永续                                   |                   |
+| ├─ deliveryType          | number    | 必须     |        | 交割类型，1现金交割，2实物交割                           |                   |
+| ├─ deliveryPeriod        | number    | 必须     |        | 交割周期，0永续1日2周3月                                 |                   |
+| ├─ contractSide          | number    | 必须     |        | 合约方向，1正向，2反向                                   |                   |
+| ├─ contractUnit          | number    | 必须     |        | 合约单位                                                 |                   |
+| ├─ lastTradeTime         | number    | 必须     |        | 最后交易时间                                             |                   |
+| ├─ deliveryTime          | number    | 必须     |        | 最后交割时间                                             |                   |
+| ├─ posiLimit             | number    | 必须     |        | 持仓限额                                                 |                   |
+| ├─ orderLimit            | number    | 必须     |        | 委托限额                                                 |                   |
+| ├─ impactMarginNotional  | number    | 必须     |        | 保证金影响额                                             |                   |
+| ├─ minMaintainRate       | number    | 必须     |        | 最小维持保证金率                                         |                   |
+| ├─ fairBasisInterval     | number    | 必须     |        | 结算价基差计算间隔                                       |                   |
+| ├─ clearPriceInterval    | number    | 必须     |        | 结算价计算间隔                                           |                   |
+| ├─ deliveryPriceInterval | number    | 必须     |        | 交割价计算间隔                                           |                   |
+| ├─ varietyId             | number    | 必须     |        | 品种ID，标的ID                                           |                   |
+
+
+
 ## 获取用户信息
 
 获取用户相关信息无需签名，只需要带上用户oauth2 的身份令牌即可，和访问合约云页面一样的处理
