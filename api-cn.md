@@ -26,9 +26,9 @@
 	* [资产查询](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#资产查询)
 		
 	* [转账](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#转账)
-	* [查询子用户手续费（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户手续费（按日期）)
-	* [查询子用户盈亏（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户盈亏（按日期））)
-	* [查询子用户成交金额（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户成交金额（按日期）)
+	* [查询子用户手续费](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户手续费)
+	* [查询子用户盈亏](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户盈亏)
+	* [查询子用户成交金额](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户成交金额)
 
 [B端mq对接](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#b端mq对接)
 
@@ -655,7 +655,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 | data | object | 必须     |        | 转账单号（用于查询转账状态clientId值） |          |
 
 
-## 查询子用户手续费（按日期）
+## 查询子用户手续费
 
 
 
@@ -693,7 +693,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 | ├──totalFee | number | 必须   |        | 累计手续费|          |
 
 
-## 查询子用户盈亏（按日期）
+## 查询子用户盈亏
 
 
 
@@ -731,7 +731,7 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 | ├──totalProfit | number | 必须   |        | 用户当前总盈亏|          |
 
 
-## 查询子用户成交金额（按日期）
+## 查询子用户成交金额
 
 
 
