@@ -26,6 +26,9 @@
 	* [资产查询](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#资产查询)
 		
 	* [转账](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#转账)
+	* [查询子用户手续费（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户手续费（按日期）)
+	* [查询子用户盈亏（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户盈亏（按日期））)
+	* [查询子用户成交金额（按日期）](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户成交金额（按日期）)
 
 [B端mq对接](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#b端mq对接)
 
@@ -650,6 +653,121 @@ print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'PO
 | code | number | 必须     |        | 返回code（0：成功  非0：失败） |          |
 | msg  | string | 必须     |        | 返回消息                       |          |
 | data | object | 必须     |        | 转账单号（用于查询转账状态clientId值） |          |
+
+
+## 查询子用户手续费（按日期）
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryDayFees
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例                                            | 备注                                                         |
+| -------- | -------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| filter   | 是       | filter=%7B%22currencyId%22%3A7%2C%22statDate%22%3A%2220200109%22%7D | 值为URLEcode编码， 编码后用大写，如：%3a 需要转换成 %3A,解码值为：{"currencyId":7,"statDate":"20200109"},参数如下所示：currencyId(必传   货币ID),tatDate(必传   查询日期，如：20200109),pageNum(非必 当前页，默认：1),pageSize(非必  页条数，默认：1000，大于1000时取1000)|
+
+### 返回数据
+
+| 名称             | 类型   | 是否必须 | 默认值 | 备注                                                         | 其他信息 |
+| ---------------- | ------ | -------- | ------ | ------------------------------------------------------------ | -------- |
+| code             | number | 必须     |        |                                                              |          |
+| msg              | string | 必须     |        |                                                              |          |
+| data             | object | 必须     |        |                                                              |          |
+| ├─pageNum       | number | 必须     |        | 当前页                                                     |          |
+| ├─pageSize | number | 必须     |        | 页条数|          |
+| ├─total | number | 必须     |        | 总记录条数|          |
+| ├─pages | number | 必须     |        | 页数|          |
+| ├─list | object | 必须     |        | 数据|          |
+| ├──userId | number | 必须     |        | 用户ID|          |
+| ├──totalFee | number | 必须   |        | 累计手续费|          |
+
+
+## 查询子用户盈亏（按日期）
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryDayProfits
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例                                            | 备注                                                         |
+| -------- | -------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| filter   | 是       | filter=%7B%22currencyId%22%3A7%2C%22statDate%22%3A%2220200109%22%7D | 值为URLEcode编码， 编码后用大写，如：%3a 需要转换成 %3A,解码值为：{"currencyId":7,"statDate":"20200109"},参数如下所示：currencyId(必传   货币ID),tatDate(必传   查询日期，如：20200109),pageNum(非必 当前页，默认：1),pageSize(非必  页条数，默认：1000，大于1000时取1000)|
+
+### 返回数据
+
+| 名称             | 类型   | 是否必须 | 默认值 | 备注                                                         | 其他信息 |
+| ---------------- | ------ | -------- | ------ | ------------------------------------------------------------ | -------- |
+| code             | number | 必须     |        |                                                              |          |
+| msg              | string | 必须     |        |                                                              |          |
+| data             | object | 必须     |        |                                                              |          |
+| ├─pageNum       | number | 必须     |        | 当前页                                                     |          |
+| ├─pageSize | number | 必须     |        | 页条数|          |
+| ├─total | number | 必须     |        | 总记录条数|          |
+| ├─pages | number | 必须     |        | 页数|          |
+| ├─list | object | 必须     |        | 数据|          |
+| ├──userId | number | 必须     |        | 用户ID|          |
+| ├──totalProfit | number | 必须   |        | 用户当前总盈亏|          |
+
+
+## 查询子用户成交金额（按日期）
+
+
+
+### 基本信息
+
+**Path：** /api/v1/broker/queryDayMatchAmts
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+
+**Headers**
+
+**Query**
+
+| 参数名称 | 是否必须 | 示例                                            | 备注                                                         |
+| -------- | -------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| filter   | 是       | filter=%7B%22currencyId%22%3A7%2C%22statDate%22%3A%2220200109%22%7D | 值为URLEcode编码， 编码后用大写，如：%3a 需要转换成 %3A,解码值为：{"currencyId":7,"statDate":"20200109"},参数如下所示：currencyId(必传   货币ID),tatDate(必传   查询日期，如：20200109),pageNum(非必 当前页，默认：1),pageSize(非必  页条数，默认：1000，大于1000时取1000)|
+
+### 返回数据
+
+| 名称             | 类型   | 是否必须 | 默认值 | 备注                                                         | 其他信息 |
+| ---------------- | ------ | -------- | ------ | ------------------------------------------------------------ | -------- |
+| code             | number | 必须     |        |                                                              |          |
+| msg              | string | 必须     |        |                                                              |          |
+| data             | object | 必须     |        |                                                              |          |
+| ├─pageNum       | number | 必须     |        | 当前页                                                     |          |
+| ├─pageSize | number | 必须     |        | 页条数|          |
+| ├─total | number | 必须     |        | 总记录条数|          |
+| ├─pages | number | 必须     |        | 页数|          |
+| ├─list | object | 必须     |        | 数据|          |
+| ├──userId | number | 必须     |        | 用户ID|          |
+| ├──matchAmt | number | 必须   |        | 用户当前总成交额|          |
+
 
 	      
 ##### B端mq对接
