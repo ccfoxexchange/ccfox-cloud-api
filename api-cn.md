@@ -80,7 +80,7 @@
 5. 用户的有关消息（强平/强减）将通过mq推送，需要您根据[B端mq对接](#####B端mq对接)自行对接去给您的用户发送消。
 
 
-![对接示意图](http://assets.processon.com/chart_image/5d216009e4b0f42d0679e75a.png)
+![对接示意图](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png?_=1581323179918)
 
 #### 对接交易页面前端
 
