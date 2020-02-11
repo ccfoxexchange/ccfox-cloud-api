@@ -13,18 +13,6 @@
 * 优化风控极致，客活率up up up!
 * 前期培训+持续运营支持，保障您的成功！
 
-
-## 只需一周，拥有专属于您的合约交易功能
-
-您只需要对接少量接口，即可快速接入，仅需1周！ 
-
-欢迎联系我们：
-
-* 微信：13066998399  （加好友请注明 b端合作）
-* 邮箱：sonic@ccfox.com
-
------------------------------------------------------------------------------------------
-
 ## 技术对接
 
 合约云B端对接十分简单，仅需您完成以下几步即可。
@@ -54,7 +42,7 @@
 - 用户token:     _authorization
 - 当前语言:       _lang (zh_CN,en_US,zh_TW,.....)
 - 法币币种:      _curreuncy (CNY,USD,EUR,JPY,GBP,KRW,......)
- 
+
 ### pc,h5对接步骤
 
 1. 在进入合约云页面之前先用对接好的接口拿到合约云系统的token,
@@ -119,11 +107,11 @@ API Key 包括以下两部分
 例：资产查询(GET)
 `GET https://xxx.io/api/v1/broker/queryAsset?filter={applId：应用ID（默认为2）  queryUserId：用户ID  currencyId：币种ID}`
 
-#### demo
+#### 签名demo
 
-1. node.js
-2. python
-3. java
+1. [node.js](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/node.js)
+2. [python](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/code.py)
+3. [java](https://github.com/ccfoxexchange/ccfox_api/tree/master/java/)
 
 ## 公共接口
 
@@ -630,7 +618,7 @@ API Key 包括以下两部分
 | ├──matchAmt | number | 必须   |        | 用户当前总成交额|          |
 
 
-	      
+​	      
 ##### B端mq对接
 
 - B端MQ对接
@@ -648,10 +636,10 @@ API Key 包括以下两部分
       side         买卖方向，1：买，-1：卖
       margin_rate  保证金率，值扩大了10^18次方，B端在使用时需缩小
       trigger_type 类型，1：告警，2：强平，3：强减, 4: 强减对手方
-    ```
+   ```
    - MQ配置说明
    <br>以下是MQ消费配置展示列,如果需要，联系我们</br>
-   
+  
    ``` java
     # 消费组ID
     group-id: **********
@@ -668,11 +656,11 @@ API Key 包括以下两部分
     # 消息标签
     tags:**********
    ```
-   
+  
     - RocketMQ参考url
-   
+  
     https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV
-   
+  
     - java对接demo
-    https://github.com/ccfoxexchange/rocket-consumer-client
-   
+      https://github.com/ccfoxexchange/rocket-consumer-client
+  
