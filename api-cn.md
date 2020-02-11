@@ -1,4 +1,45 @@
 
+
+## 目录Table of Contents
+
+- [合约云B端对接文档](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc0)
+
+
+
+- [技术对接](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc1)
+
+- [对接示意图](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc2)
+
+  
+
+- [对接交易页面前端](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc3)
+
+  - [ 对接需注入的 Cookie (注意cookie域)](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc4)
+  - [ pc,h5对接步骤](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc5)
+  - [ android,ios通过webview嵌入合约云](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc6)
+
+- [API接口](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc7)
+
+- [签名](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc8)
+  - [ 说明](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc9)
+  - [ 申请创建 API Key](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc10)
+  - [ 签名步骤](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc11)
+- [公共接口](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc12)
+  - [获取用户信息](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc16)
+  - [子账号注册](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc17)
+  - [子账号登录](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc21)
+  - [查询子账户期货历史委托](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc25)
+  - [查询子账户期货历史成交](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc30)
+  - [查询转账状态](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc35)
+  - [资产查询](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc39)
+  - [转账](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc43)
+  - [查询子用户手续费](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc47)
+  - [查询子用户盈亏](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc51)
+  - [查询子用户成交金额](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc55)
+- Q&A
+
+
+
 # 合约云B端对接文档
 如果您符合以下其中一种或多种条件，您可以B端对接端方式接入合约云，快速部署属于您的衍生品合约交易系统。
 
@@ -664,3 +705,12 @@ API Key 包括以下两部分
     - java对接demo
       https://github.com/ccfoxexchange/rocket-consumer-client
   
+
+
+## Q&A
+
+1. Q: 转账接口的api是否有白名单可以限制?
+   A: 生产都要加白名单的，调试期见放开，上线的时候加白名单
+
+2. Q: 前端都使用的是合约云页面，例如web首次调用xxx接口获取好用户的accesstoken给到前端，保存下来，后续过期问题，包括保证app的token也不过期，对xxx来说这里如何对接
+   A: 登录应该是你们那边登录，然后把cookie存好就可以了,一旦过期，需要调到XXX重新登录，然后再回到交易页面
