@@ -1,37 +1,3 @@
-* [合约云B端对接文档](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#合约云b端对接文档)
-		* [只需一周，拥有专属于您的合约交易功能](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#只需一周拥有专属于您的合约交易功能)
-		* [技术对接](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#技术对接)
-			* [对接交易页面前端](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#对接交易页面前端)
-			* [API接口](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#api接口)
-			* [签名说明](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#签名说明)
-				* [申请创建 API Key](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#申请创建-api-key)
-				* [签名步骤](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#签名步骤)
-				* [签名失败](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#签名失败)
-				* [示例代码](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#示例代码)
-		
-	* [公共接口](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#公共接口)
-	
-	* [获取用户信息](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#获取用户信息)
-	
-	* [子账号注册](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#子账号注册)
-		
-	* [子账号登录](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#子账号登录)
-		
-	* [查询子账户期货历史委托](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子账户期货历史委托)
-		
-	* [查询子账户期货历史成交](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子账户期货历史成交)
-		
-	* [查询转账状态](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询转账状态)
-		
-	* [资产查询](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#资产查询)
-		
-	* [转账](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#转账)
-	* [查询子用户手续费](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户手续费)
-	* [查询子用户盈亏](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户盈亏)
-	* [查询子用户成交金额](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#查询子用户成交金额)
-
-[B端mq对接](https://github.com/ccfoxexchange/cloud-api/blob/master/api-cn.md#b端mq对接)
-
 
 # 合约云B端对接文档
 如果您符合以下其中一种或多种条件，您可以B端对接端方式接入合约云，快速部署属于您的衍生品合约交易系统。
@@ -48,7 +14,7 @@
 * 前期培训+持续运营支持，保障您的成功！
 
 
-### 只需一周，拥有专属于您的合约交易功能
+## 只需一周，拥有专属于您的合约交易功能
 
 您只需要对接少量接口，即可快速接入，仅需1周！ 
 
@@ -59,9 +25,7 @@
 
 -----------------------------------------------------------------------------------------
 
-![aa](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png?_=1562828594434)
-
-### 技术对接
+## 技术对接
 
 合约云B端对接十分简单，仅需您完成以下几步即可。
 
@@ -79,32 +43,47 @@
     * 用户进入**交易页面前端**时，调用 [登陆接口](#####子账号登录)为用户在 我们的系统 登陆
 5. 用户的有关消息（强平/强减）将通过mq推送，需要您根据[B端mq对接](#####B端mq对接)自行对接去给您的用户发送消。
 
+## 对接示意图
 
-![对接示意图](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png?_=1581323179918)
+![对接示意图](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png)
 
-#### 对接交易页面前端
+## 对接交易页面前端
 
-1. 先在APP登录好，得到token，
-2. 然后在跳转交易页前将token代入url(http://mcloudtest.ccfox.com/?token=cf6b5c94-4041-466f-8df5-0ddb4c6b6ce7) 
-3. 国际化默认使用中文，可通过请求中添加参数切换语言，(http://mcloudtest.ccfox.com/?token=xxx&locale=en_US) locale可选值包含中文，英文，中文繁体，依次为zh_CN， en_US， zh_TW
+### 对接需注入的 Cookie (注意cookie域)
 
-所有接口都需要在header里添加apiKey，apiExpires，signature三个参数
+- 用户token:     _authorization
+- 当前语言:       _lang (zh_CN,en_US,zh_TW,.....)
+- 法币币种:      _curreuncy (CNY,USD,EUR,JPY,GBP,KRW,......)
+ 
+### pc,h5对接步骤
 
-* 交易页面前端demo如下：
-  * h5
-    * 测试环境 http://mcloudtest.ccfox.com 
-    * 生产 请联系我们
-  * web
-    * 测试环境 http://webcloudtest.ccfox.com
-    * 生产 请联系我们
+1. 在进入合约云页面之前先用对接好的接口拿到合约云系统的token,
+2. 拿到上一步的token及使用合适的语言和法币币种共3个参数，注入到合约云域名下（例：对接方域名www.cloud.com,则需要注入域为.cloud.com），然后在跳转交易页前将token代入url(http://futures.cloud.com) 
+3. 国际化默认使用中文，可通过cookie注入参数切换语言，locale可选值包含中文，英文，中文繁体，依次为zh_CN， en_US， zh_TW
+4. 法币规则同步骤3
 
-#### API接口
+### android,ios通过webview嵌入合约云
+
+> 对于ios,ws的url要和主域名一致（ex:主域名ccfox.com,那么ws的url应该为xxx.ccfox.com）
+
+1. 先在APP登录好，得到token
+2. 把所需的cookie注入到webview
+3. 使用jsBridge交互，交互细节如下，需要原生端和网页端调试约定事件
+    - login  (登陆)
+    - h5_href 需要跳转的二级页面（ex:从交易页面到历史委托），参数：h5路径(ex:/records)，在上层打开一个新的webView
+    - h5_back 从二级页面返回交易页面，关闭上层webView(ex:从行情详情页面返回交        易页面),参数(null || string),有参数需要将参数通过 backToTrade 事件发送给h5
+    - transfer (划转)
+    - 每次进入h5（首次进入或者从原生其他地方返回再进入，ex:划转完，回来交易页),向h5发送 backToH5  事件，用来拉取数据
+
+
+## API接口
 
 - 测试环境地址 https://apitest.ccfox.com/
 - 生产环境地址 https://api.ccfox.com/
 
-#### 签名说明
+## 签名
 
+### 说明
 API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。
 
 一个合法的请求由以下几部分组成：
@@ -125,7 +104,7 @@ var headers = {
 
 ```
 
-##### 申请创建 API Key
+### 申请创建 API Key
 
 通过crm系统获取B端 API Key
 
@@ -134,136 +113,18 @@ API Key 包括以下两部分
 * `Access Key` API 访问密钥
 * `Secret Key` 签名认证加密所使用的密钥
 
-##### 签名步骤
+### 签名步骤
 
 规范要计算签名的请求 因为使用 SHA256 进行签名计算时，使用不同内容计算得到的结果会完全不同。所以在进行签名计算前，请先对请求进行规范化处理。（GET和POST请求不同）
 例：资产查询(GET)
-
 `GET https://xxx.io/api/v1/broker/queryAsset?filter={applId：应用ID（默认为2）  queryUserId：用户ID  currencyId：币种ID}`
 
-```js
-//accessKey： c4e516d4-8f42-4c48-bbbe-8d74ad62d45c2
-//secretKey： d4f74ddd-6875-48b9-827c-49473b80f24d2
-verb = 'GET'
-//Note url-encoding on querystring - this is '/api/v1/instrument?filter={"orderId":"11548326910655928"}'
+#### demo
 
-//Be sure to HMAC exactly what is sent on the wire
+1. node.js
+2. python
+3. java
 
-path = '/api/v1/broker/queryAsset?filter=%7b%22applId%22%3a5%2c%22queryUserId%22%3a%22129%22%2c%22currencyId%22%3a1%7d'
-expires = 1518064237
-data = ''
-
-HEX(HMAC_SHA256(apiSecret, 'GET/api/v1/order?filter=%7B%22orderId%22%3A%2211548326910655928%22%7D1518064237'))
-
-Result is:'f8c9f640e1c9a068e27eac13e38fb900766d6953862d598bb483266dfa96017d'
-signature = HEX(HMAC_SHA256(secretKey, verb + path + str(expires) + data))
-
-```
-
-例：创建订单(POST)
-
-```js
-verb = 'POST'
-path = '/api/v1/order'
-expires = 1518064238
-
-data = '{"symbol":"XBTM15","price":219.0,"clOrdID":"oemUeQ4CAJZgP3fjHsA","orderQty":98}'
-
-HEX(HMAC_SHA256(apiSecret, 'POST/api/v1/order1518064238{"symbol":"XBTM15","price":219.0,"clOrdID":"mm_bitmex_1a/oemUeQ4CAJZgP3fjHsA","orderQty":98}'))
-
-Result is: '1749cd2ccae4aa49048ae09f0b95110cee706e0944e6a14ad0b3a8cb45bd336b'
-
-signature = HEX(HMAC_SHA256(apiSecret, verb + path + str(expires) + data))
-
-```
-
-##### 签名失败
-
-* 检查 API Key 是否有效，是否复制正确，是否有绑定 IP 白名单
-* 检查时间戳是否是 UTC 当前时间戳，校验一分钟以内合法
-* 检查参数是否按(verb + path + nonce + data)排序
-* 检查编码utf-8
-
-##### 示例代码
-
-* node.js
-
-``` javascript
-var request = require("request");
-var crypto = require("crypto");
-
-var accessKey = "c4e516d4-8f42-4c48-bbbe-8d74ad62d45c";
-var secretKey = "d4f74ddd-6875-48b9-827c-49473b80f24d";
-
-var verb = "GET";
-var path = "/api/v1/broker/queryAsset?filter=%7b%22applId%22%3a5%2c%22queryUserId%22%3a%22129%22%2c%22currencyId%22%3a1%7d"; //值为URLEcode编码
-var expires = 1548311559;
-var data = "";
-
-var postBody = JSON.stringify(data);
-var signature = crypto
-  .createHmac("sha256", secretKey)
-  .update(verb + path + expires + data)
-  .digest("hex");
-
-var headers = {
-  "content-type": "application/json",
-  Accept: "application/json",
-  apiExpires: expires,
-  apikey: accessKey,
-  signature: signature
-};
-
-const requestOptions = {
-  headers: headers,
-  url: "host" + path,
-  method: verb,
-  body: postBody
-};
-
-request(requestOptions, function(error, response, body) {
-  if (error) {
-    console.log(error);
-  }
-  console.log(body);
-});
-```
-
-- python
-
-```python
-import time
-import hashlib
-import hmac
-from urllib.parse import urlparse
-# 签名是 HMAC_SHA256(secret, verb + path + expires + data)，十六进制编码。
-# verb 必须是大写的，url 是相对的，expires 必须是 unix 时间戳（以秒为单位）
-# 并且数据（如果存在的话）必须是 JSON 格式，并且键值之间没有空格。
-def generate_signature(secret, verb, url, expires, data):
-    """Generate a request signature compatible with cloud."""
-    # 解析该 url 来移除基础地址而得到 path
-    parsedURL = urlparse(url)
-    path = parsedURL.path
-    if parsedURL.query:
-        path = path + '?' + parsedURL.query
-
-    if isinstance(data, (bytes, bytearray)):
-        data = data.decode('utf8')
-
-    print("Computing HMAC: %s" % verb + path + str(expires) + data)
-    message = verb + path + str(expires) + data
-
-    signature = hmac.new(bytes(secret, 'utf8'), bytes(message, 'utf8'), digestmod=hashlib.sha256).hexdigest()
-    return signature
-
-expires = 1518064236
-# 或者你可以像以下这样生成:
-# expires = int(round(time.time()) + 5)
-# GET请求将参数json化，然后urlencode, 放在url参数后面(?filter=xxxxxxx), data为空字符串
-# POST请求将参数json化成字符串(字符串不能有空格)，放在data参数的位置
-print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'GET', '/api/v1/instrument?filter=%7B%22orderId%22%3A%2211548326910655928%22%7D1518064237', expires, ''))
-print(generate_signature('chNOOS4KvNXR_Xq4k4c9qsfoKWvnDecLATCRlcBwyKDYnWgO', 'POST', '/api/v1/instrument', expires, '{"symbol":"XBTM15","price":219.0,"clOrdID":"mm_bitmex_1a/oemUeQ4CAJZgP3fjHsA","orderQty":98}'))
-```
 ## 公共接口
 
 币种接口： https://apitest.ccfox.com/future/queryCommonInfo
