@@ -660,7 +660,7 @@ API Key 包括以下两部分
 
 
 ​	      
-##### B端mq对接
+## B端mq对接
 
 - B端MQ对接
     - 说明
@@ -698,19 +698,17 @@ API Key 包括以下两部分
     tags:**********
    ```
   
-    - RocketMQ参考url
+    - [RocketMQ参考url](https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV)
+    - [java对接demo](https://github.com/ccfoxexchange/rocket-consumer-client)
   
-    https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV
-  
-    - java对接demo
-      https://github.com/ccfoxexchange/rocket-consumer-client
-  
-
 
 ## Q&A
 
 1. Q: 转账接口的api是否有白名单可以限制?
+   
    A: 生产都要加白名单的，调试期见放开，上线的时候加白名单
-
+   
 2. Q: 前端都使用的是合约云页面，例如web首次调用xxx接口获取好用户的accesstoken给到前端，保存下来，后续过期问题，包括保证app的token也不过期，对xxx来说这里如何对接
-   A: 登录应该是你们那边登录，然后把cookie存好就可以了,一旦过期，需要调到XXX重新登录，然后再回到交易页面
+
+   A: 一旦过期，需要跳到XXX登录页面重新登录，然后再回到交易页面
+
