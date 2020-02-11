@@ -104,6 +104,19 @@
     - transfer (划转)
     - 每次进入h5（首次进入或者从原生其他地方返回再进入，ex:划转完，回来交易页),向h5发送 backToH5  事件，用来拉取数据
 
+    **步骤3具体功能事件列表**
+
+    | 按钮          | 类型     | 参数                                              |
+    | ------------- | -------- | ------------------------------------------------- |
+    | 资产划转      | transfer | undefined                                         |
+    | 资金记录      | href     | /contract/capitalRecord?contractId=1000000   |
+    | 爆仓记录      | href     | /contract/burstHistory?contractId=1000000    |
+    | 合约资料      | href     | /contract/deliveryHistory?contractId=1000000 |
+    | 保证金账户    | href     | /contract/bondAccount?contractId=1000000     |
+    | 盈亏历史      | href     | /contract/PnLHistory?contractId=1000000      |
+    | 选择合约      | href     | /contract/headerList                         |
+    | 行情页面kline | href     | /quotes/details?id=1000000                   |
+    | 登录          | href     | undefined                                         |
 
 ## API接口
 
@@ -710,11 +723,14 @@ API Key 包括以下两部分
     2.  Q: 前端都使用的是合约云页面，例如web首次调用xxx接口获取好用户的accesstoken给到前端，保存下来，后续过期问题，包括保证app的token也不过期，对xxx来说这里如何对接
         A: 一旦过期，需要跳到XXX登录页面重新登录，然后再回到交易页面
 
-    3.  母账户能否交易
+    3.  Q: mcloud.ccfox.com能否单独运行在浏览器中
+        A: 这个项目必须配合 app 使用，单独浏览器事件没有落地的地方，所以没有反馈；点击功能按钮后 js 会发事件出去  app接住做处理 再交互下一步
+
+    4.  母账户能否交易
         出于方便对账的考虑，合约云的母账户 是不能用于交易的，我们会禁止交易权限。
     
-    4.  Q: 是否支持接入点卡。点卡抵扣手续费的比例是否支持自定义设置
+    5.  Q: 是否支持接入点卡。点卡抵扣手续费的比例是否支持自定义设置
         A: 对接方的点卡/平台币抵扣，可以自行开发，我们提供手续费数据，对接方可以按照先收后反的方式处理。
     
-    5.  Q：对接方的邀请返佣体系如何处理。
+    6.  Q：对接方的邀请返佣体系如何处理。
         A：整个的邀请返佣模块，都可以由对接方按照自己需求自行开发，我们提供每个用户的数据接口。
