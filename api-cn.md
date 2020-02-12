@@ -95,6 +95,8 @@
 
 > 对于ios,ws的url要和主域名一致（ex:主域名ccfox.com,那么ws的url应该为xxx.ccfox.com）
 
+> 合约云生产页面 https://mcloud.ccfox.com
+
 1. 先在APP登录好，得到token
 2. 把所需的cookie注入到webview
 3. 使用jsBridge交互，交互细节如下，需要原生端和网页端调试约定事件
@@ -106,17 +108,20 @@
 
     **步骤3具体功能事件列表**
 
-    | 按钮          | 类型     | 参数                                              |
-    | ------------- | -------- | ------------------------------------------------- |
-    | 资产划转      | transfer | undefined                                         |
-    | 资金记录      | href     | /contract/capitalRecord?contractId=1000000   |
-    | 爆仓记录      | href     | /contract/burstHistory?contractId=1000000    |
-    | 合约资料      | href     | /contract/deliveryHistory?contractId=1000000 |
-    | 保证金账户    | href     | /contract/bondAccount?contractId=1000000     |
-    | 盈亏历史      | href     | /contract/PnLHistory?contractId=1000000      |
-    | 选择合约      | href     | /contract/headerList                         |
-    | 行情页面kline | href     | /quotes/details?id=1000000                   |
-    | 登录          | href     | undefined                                         |
+    | 按钮                     | 事件名   | 参数                                                         |
+    | ------------------------ | -------- | ------------------------------------------------------------ |
+    | 资产划转                 | transfer | undefined                                                    |
+    | 资金记录                 | h5_href  | 需要将参数拼接在baseUrl后面打开新的 webView，以下 h5_href 同理，/contract/capitalRecord?contractId=1000000 |
+    | 爆仓记录                 | h5_href  | /contract/burstHistory?contractId=1000000                    |
+    | 合约资料                 | h5_href  | /contract/deliveryHistory?contractId=1000000                 |
+    | 保证金账户               | h5_href  | /contract/bondAccount?contractId=1000000                     |
+    | 盈亏历史                 | h5_href  | /contract/PnLHistory?contractId=1000000                      |
+    | 选择合约                 | h5_href  | /contract/headerList                                         |
+    | 行情页面kline            | h5_href  | /quotes/details?id=1000000                                   |
+    | 登录                     | login    | undefined                                                    |
+    | 二级页面返回按钮         | h5_back  | underfined                                                   |
+    | 行情页面底部买入卖出按钮 | h5_back  | 需要将参数通过 backToTrade 事件发送给h5                      |
+    | 每次进入h5               | backToH5 | 需要向h5发送事件 backToH5                                    |
 
 ## API接口
 
