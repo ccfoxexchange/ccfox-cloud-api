@@ -707,6 +707,73 @@ API Key 包括以下两部分
   
 
 
+
+
+## 部署安排
+
+部署在您的服务器上。
+在服务器上需要安装docker(13以上) 
+
+```
+
+# 安装docker
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo yum install docker-ce docker-ce-cli containerd.io
+
+sudo systemctl start docker
+
+sudo docker run hello-world
+
+```
+
+### pc页面的部署
+
+* 使用您的一级域名, 例如 futures.xxx.com
+* 拉取准备好的前端web页面的docker镜像
+* 在服务器上配置nginx反向代理，指向服务器 8081端口
+* 我们强烈推荐使用云服务上的slb来做nginx代理的方法，并通过后端2节点部署实现高可用
+
+```
+# 部署脚本示例，生产部署时候镜像要根据您的更换
+
+docker pull registry.ap-southeast-1.aliyuncs.com/ccfox/hoo-web-pro:blue
+
+docker run -itd -p 8081:80 --name apppro registry.ap-southeast-1.aliyuncs.com/ccfox/hoo-web-pro:blue
+
+```
+
+### 内嵌在app里的h5的部署
+* 使用ccfox的一级域名下的二级域名， 比如 mxxxxxx.ccfox.com . 这么做是为了解决ios的容器的跨域限制问题
+* ccfox为您准备一个 ssl证书
+* 在服务器上配置nginx反向代理，指向服务器 8082端口
+* 我们强烈推荐使用云服务上的slb来做nginx代理的方法，并通过后端2节点部署实现高可用
+
+```
+# 部署脚本示例，生产部署时候镜像要根据您的更换
+
+docker pull registry.ap-southeast-1.aliyuncs.com/ccfox/ccfox-cloud-hoo-pro:blue
+
+docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/ccfox/ccfox-cloud-hoo-pro:blue
+
+```
+
+
 ## Q&A
 
     1.  Q: 转账接口的api是否有白名单可以限制?
