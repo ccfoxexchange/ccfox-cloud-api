@@ -74,7 +74,7 @@
 
 ## 对接示意图
 
-![对接示意图](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png)
+![对接示意图](http://assets.processon.com/chart_image/5c1c5704e4b0b71ee503e019.png?_=1581323179918)
 
 ## 对接交易页面前端
 
@@ -95,6 +95,8 @@
 
 > 对于ios,ws的url要和主域名一致（ex:主域名ccfox.com,那么ws的url应该为xxx.ccfox.com）
 
+> 合约云生产页面 https://mcloud.ccfox.com
+
 1. 先在APP登录好，得到token
 2. 把所需的cookie注入到webview
 3. 使用jsBridge交互，交互细节如下，需要原生端和网页端调试约定事件
@@ -104,6 +106,22 @@
     - transfer (划转)
     - 每次进入h5（首次进入或者从原生其他地方返回再进入，ex:划转完，回来交易页),向h5发送 backToH5  事件，用来拉取数据
 
+    **步骤3具体功能事件列表**
+
+    | 按钮                     | 事件名   | 参数                                                         |
+    | ------------------------ | -------- | ------------------------------------------------------------ |
+    | 资产划转                 | transfer | undefined                                                    |
+    | 资金记录                 | h5_href  | 需要将参数拼接在baseUrl后面打开新的 webView，以下 h5_href 同理，/contract/capitalRecord?contractId=1000000 |
+    | 爆仓记录                 | h5_href  | /contract/burstHistory?contractId=1000000                    |
+    | 合约资料                 | h5_href  | /contract/deliveryHistory?contractId=1000000                 |
+    | 保证金账户               | h5_href  | /contract/bondAccount?contractId=1000000                     |
+    | 盈亏历史                 | h5_href  | /contract/PnLHistory?contractId=1000000                      |
+    | 选择合约                 | h5_href  | /contract/headerList                                         |
+    | 行情页面kline            | h5_href  | /quotes/details?id=1000000                                   |
+    | 登录                     | login    | undefined                                                    |
+    | 二级页面返回按钮         | h5_back  | underfined                                                   |
+    | 行情页面底部买入卖出按钮 | h5_back  | 需要将参数通过 backToTrade 事件发送给h5                      |
+    | 每次进入h5               | backToH5 | 需要向h5发送事件 backToH5                                    |
 
 ## API接口
 
@@ -660,7 +678,7 @@ API Key 包括以下两部分
 
 
 ​	      
-##### B端mq对接
+## B端mq对接
 
 - B端MQ对接
     - 说明
@@ -698,12 +716,8 @@ API Key 包括以下两部分
     tags:**********
    ```
   
-    - RocketMQ参考url
-  
-    https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV
-  
-    - java对接demo
-      https://github.com/ccfoxexchange/rocket-consumer-client
+    - [RocketMQ参考url](https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV)
+    - [java对接demo](https://github.com/ccfoxexchange/rocket-consumer-client)
   
 
 
@@ -780,13 +794,16 @@ docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
         A: 生产都要加白名单的，调试期见放开，上线的时候加白名单
 
     2.  Q: 前端都使用的是合约云页面，例如web首次调用xxx接口获取好用户的accesstoken给到前端，保存下来，后续过期问题，包括保证app的token也不过期，对xxx来说这里如何对接
-        A: 登录应该是你们那边登录，然后把cookie存好就可以了,一旦过期，需要调到XXX重新登录，然后再回到交易页面
+        A: 一旦过期，需要跳到XXX登录页面重新登录，然后再回到交易页面
 
-    3.  母账户能否交易
+    3.  Q: mcloud.ccfox.com能否单独运行在浏览器中
+        A: 这个项目必须配合 app 使用，单独浏览器事件没有落地的地方，所以没有反馈；点击功能按钮后 js 会发事件出去  app接住做处理 再交互下一步
+
+    4.  母账户能否交易
         出于方便对账的考虑，合约云的母账户 是不能用于交易的，我们会禁止交易权限。
     
-    4.  Q: 是否支持接入点卡。点卡抵扣手续费的比例是否支持自定义设置
+    5.  Q: 是否支持接入点卡。点卡抵扣手续费的比例是否支持自定义设置
         A: 对接方的点卡/平台币抵扣，可以自行开发，我们提供手续费数据，对接方可以按照先收后反的方式处理。
     
-    5.  Q：对接方的邀请返佣体系如何处理。
+    6.  Q：对接方的邀请返佣体系如何处理。
         A：整个的邀请返佣模块，都可以由对接方按照自己需求自行开发，我们提供每个用户的数据接口。
