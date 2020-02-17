@@ -341,8 +341,9 @@ API Key 包括以下两部分
 | ├─ access_token  | string | 必须     |        | token                          |          |
 | ├─ token_type    | string | 必须     |        | token类型                      |          |
 | ├─ refresh_token | string | 必须     |        | 刷新token                      |          |
-| ├─ expires_in    | string | 必须     |        | 有效时间：毫秒为单位           |          |
+| ├─ expires_in    | string | 必须     |        | 有效时间：毫秒为单位            |          |
 | ├─ scope         | string | 必须     |        |                                |          |
+| ├─ userId        | number | 必须     |        |    用户id                       |          |
 
 ## 查询子账户期货历史委托
 
