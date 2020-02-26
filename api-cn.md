@@ -82,7 +82,7 @@
 
 - 用户token:     _authorization
 - 当前语言:       _lang (zh_CN,en_US,zh_TW,.....)
-- 法币币种:      _curreuncy (CNY,USD,EUR,JPY,GBP,KRW,......)
+- 法币币种:      _currency (CNY,USD,EUR,JPY,GBP,KRW,......)
 
 ### pc,h5对接步骤
 
