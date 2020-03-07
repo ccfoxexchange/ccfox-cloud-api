@@ -859,11 +859,11 @@ docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
 
 ### **特别注意 api和websocket的代理**
 * 我们提供的合约云前端代码，对api进行了前端代理，也就是说：所有restful的api请求，都会经过前端的nginx代理一层
-* 为了防止出现跨域问题，请对 websocket的连接代理，保证您的 h5/pc 项目，连接的websocket的域名，和h5/pc，属于同一个 一级域名。 配置websocket的nginx配置如这[nginx.conf](\nginx-demo-ws.conf)：
+* 为了防止出现跨域问题，请对 websocket的连接代理，保证您的 h5/pc 项目，连接的websocket的域名，和h5/pc，属于同一个 一级域名。 配置websocket的nginx配置如这[nginx.conf](/nginx-demo-ws.conf)：
     > 配置nginx转发时，请修改转发机器的本地hosts，将futurews.ccfox.com 解析到ccfox的源站接入点上。源站接入点ip和白名单，请找ccfox的网络管理员进行配置。
 
 * ios的webview容器wkwebview，会有很严重的跨域问题，所以上面两步必须做。
-* 另外，请确认前端代码中有如下[配置](\js_config_ws.png)（如果没有请添加）：
+* 另外，请确认前端代码中有如下[配置](/js_config_ws.png)（如果没有请添加）：
     ```
     options: {
       jsonp: false,
