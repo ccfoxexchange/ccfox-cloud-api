@@ -758,7 +758,7 @@ sudo docker run hello-world
 
 ### pc页面的部署
 
-* 使用您的一级域名, 例如 futures.xxx.com
+* 使用您的一级域名下的二级域名, 例如 futures.xxx.com
 * 拉取准备好的前端web页面的docker镜像
 * 在服务器上配置nginx反向代理，指向服务器 8081端口
 * 我们强烈推荐使用云服务上的slb来做nginx代理的方法，并通过后端2节点部署实现高可用
@@ -773,8 +773,7 @@ docker run -itd -p 8081:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
 ```
 
 ### 内嵌在app里的h5的部署
-* 使用ccfox的一级域名下的二级域名， 比如 mxxxxxx.ccfox.com . 这么做是为了解决ios的容器的跨域限制问题
-* ccfox为您准备一个 ssl证书
+* 使用您的一级域名下的二级域名， 比如 mfutures.xxx.com . 
 * 在服务器上配置nginx反向代理，指向服务器 8082端口
 * 我们强烈推荐使用云服务上的slb来做nginx代理的方法，并通过后端2节点部署实现高可用
 
@@ -787,6 +786,19 @@ docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
 
 ```
 
+### **特别注意 api和websocket的代理**
+* 我们提供的合约云前端代码，对api进行了前端代理，也就是说：所有restful的api请求，都会经过前端的nginx代理一层
+* 为了防止出现跨域问题，请对 websocket的连接代理，保证您的 h5/pc 项目，连接的websocket的域名，和h5/pc，属于同一个 一级域名。 配置websocket的nginx配置如这[nginx.conf](\nginx-转发demo.conf)：
+    > 配置nginx转发时，请修改转发机器的本地hosts，将futurews.ccfox.com 解析到ccfox的源站接入点上。源站接入点ip和白名单，请找ccfox的网络管理员进行配置。
+
+* ios的webview容器wkwebview，会有很严重的跨域问题，所以上面两步必须做。
+* 另外，请确认前端代码中有如下[配置](\js跨域重要配置图示.png)（如果没有请添加）：
+    ```
+    options: {
+      jsonp: false,
+      transports: ['websocket']
+    }
+    ```
 
 ## Q&A
 
