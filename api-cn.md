@@ -791,7 +791,7 @@ API Key 包括以下两部分
 | ├──totalMoney | number | 必须   |        | 总资产|          |
 | ├──orderFrozenMoney | number | 必须   |        | 委托冻结资产|          |
 | ├──closeProfitLoss | number | 必须   |        | 已实现盈亏|          |
-| ├──startDate | number | 必须   |        | 开始时间，最近更新日期时间|          |
+| ├──startDate | number | 必须   |        | 开始时间，最近更新日期时间，每天23：45：00更新|          |
 | ├──endDate | number | 必须   |        | 结束日期，9999-12-13|          |
 
 
