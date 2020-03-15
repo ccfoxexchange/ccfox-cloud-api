@@ -906,6 +906,7 @@ docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
     
     6.  Q：对接方的邀请返佣体系如何处理。
         A：整个的邀请返佣模块，都可以由对接方按照自己需求自行开发，我们提供每个用户的数据接口。
+        
     7.  Q：如何修改模拟币种
         A：在前端项目的.env,.env.test里面配置 VUE_APP_MOCK_SYMBOL=<币种Symbol>
 
