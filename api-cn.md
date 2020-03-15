@@ -1,35 +1,4 @@
-
-
-## 目录Table of Contents
-
-- [合约云B端对接文档](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc0)
-
-
-
-- [技术对接](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc1)
-
-- [对接示意图](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc2)
-
-  
-
-- [对接交易页面前端](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc3)
-
-  - [ 对接需注入的 Cookie (注意cookie域)](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc4)
-  - [ pc,h5对接步骤](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc5)
-  - [ android,ios通过webview嵌入合约云](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc6)
-
-- [API接口](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc7)
-
-- [签名](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc8)
-  - [ 说明](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc9)
-  - [ 申请创建 API Key](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc10)
-  - [ 签名步骤](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc11)
-- [公共接口](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc12)
-  - [获取用户信息](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc16)
-  - [子账号注册](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/api-cn.md#toc17)
-<!-- TOC -->
-
-    - [目录Table of Contents](#目录table-of-contents)
+- [目录Table of Contents](#目录table-of-contents)
 - [合约云B端对接文档](#合约云b端对接文档)
     - [技术对接](#技术对接)
     - [对接示意图](#对接示意图)
@@ -937,3 +906,6 @@ docker run -itd -p 8082:80 --name apppro registry.ap-southeast-1.aliyuncs.com/cc
     
     6.  Q：对接方的邀请返佣体系如何处理。
         A：整个的邀请返佣模块，都可以由对接方按照自己需求自行开发，我们提供每个用户的数据接口。
+    7.  Q：如何修改模拟币种
+        A：在前端项目的.env,.env.test里面配置 VUE_APP_MOCK_SYMBOL=<币种Symbol>
+
