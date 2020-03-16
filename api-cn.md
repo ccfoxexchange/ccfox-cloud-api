@@ -778,7 +778,7 @@ API Key 包括以下两部分
       message_type 消息类型，6001：通知类消息
       id           消息ID
       account_id   子用户ID
-      contract_id  合约ID
+      contract_id  合约ID, 0:全仓，>0:特定合约
       side         买卖方向，1：买，-1：卖
       margin_rate  保证金率，值扩大了10^18次方，B端在使用时需缩小
       trigger_type 类型，1：告警，2：强平，3：强减, 4: 强减对手方
@@ -805,6 +805,7 @@ API Key 包括以下两部分
   
     - [RocketMQ参考url](https://help.aliyun.com/product/29530.html?spm=a2c4g.11186623.6.540.6ff139c69dmBkV)
     - [java对接demo](https://github.com/ccfoxexchange/rocket-consumer-client)
+    - [通知模板参考](https://github.com/ccfoxexchange/ccfox-cloud-api/blob/master/%E9%80%9A%E7%9F%A5%E6%A8%A1%E6%9D%BF.xlsx)
   
 
 
