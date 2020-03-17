@@ -596,7 +596,7 @@ API Key 包括以下两部分
 | toApplId   | number | 必须     |        | 接收应用：默认传2                                            |          |
 | currencyId | number | 必须     |        | 币种ID                                                       |          |
 | quantity   | string | 必须     |        | 转账数量：限制小数点后六位                                   |          |
-| clientId   | string | 非必须   |        | 转账单号：UUID生成唯一标识，32位数字和字母组成（请求不传服务端会自动生成） |          |
+| clientId   | string | 必须     |        | 转账单号：UUID生成唯一标识，32位数字和字母组成 |          |
 
 ### 返回数据
 
