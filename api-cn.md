@@ -501,6 +501,10 @@ API Key 包括以下两部分
 | ├─ askInitRate       | string    | 必须     |        | 卖方初始保证金率                                             |                   |
 | ├─ bidMatchType      | number    | 必须     |        | 买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减成交（盈利方） |                   |
 | ├─ askMatchType      | number    | 必须     |        | 卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减成交（盈利方） |                   |
+| ├─ bidPnlType      | number    | 必须     |        | 买方盈亏类型：0正常成交1正常平仓2强平3强减 |                   |
+| ├─ bidPnl          | number    | 必须     |        | 买方平仓盈亏 |                   |
+| ├─ askPnlType      | number    | 必须     |        | 卖方盈亏类型：0正常成交1正常平仓2强平3强减 |                   |
+| ├─ askPnl          | number    | 必须     |        | 卖方平仓盈亏 |                   |
 
 ## 查询转账状态
 
