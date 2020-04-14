@@ -599,7 +599,7 @@ API Key 包括以下两部分
 | toUserId   | string | 必须     |        | 接收用户ID                                                   |          |
 | toApplId   | number | 必须     |        | 接收应用：默认传2                                            |          |
 | currencyId | number | 必须     |        | 币种ID                                                       |          |
-| quantity   | string | 必须     |        | 转账数量：限制小数点后六位                                   |          |
+| quantity   | string | 必须     |        | 转账数量：限制小数点后六位,cusd最小划转数：0.1                                   |          |
 | clientId   | string | 必须     |        | 转账单号：UUID生成唯一标识，32位数字和字母组成 |          |
 
 ### 返回数据
