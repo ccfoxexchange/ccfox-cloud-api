@@ -405,7 +405,7 @@ API Key 包括以下两部分
 
 | 参数名称 | 是否必须 | 示例                      | 备注                                                         |
 | :------- | :------- | :------------------------ | :----------------------------------------------------------- |
-| filter   | 是       | %7B%22userId%22%3A+275%7D | 注意：     请求参数filter=%7B%22userId%22%3A+275%7D，值为URLEcode编码， 编码后 用大写 比如 %3a 需要 转换成 %3A     解码值为：{"userId":275}     其中             userId（int）：用户ID，                                            必须             contractId（int）：交易对ID，                                  非必须             side（int）：上下页数,                                               非必须             startDate（long）：开始时间戳,                                非必须             endDate（long）：结束时间戳,                                 非必须             pageNum（int）：当前页数,                                      非必须             pageSize（int）：页显示数量,                                    非必须 |
+| filter   | 是       | %7B%22userId%22%3A+275%7D | 注意：     请求参数filter=%7B%22userId%22%3A275%7D，值为URLEcode编码， 编码后 用大写 比如 %3a 需要 转换成 %3A     解码值为：{"userId":275}     其中             userId（int）：用户ID，                                            必须             contractId（int）：交易对ID，                                  非必须             side（int）：上下页数,                                               非必须             startDate（long）：开始时间戳,                                非必须             endDate（long）：结束时间戳,                                 非必须             pageNum（int）：当前页数,                                      非必须             pageSize（int）：页显示数量,                                    非必须 |
 
 
 
@@ -466,7 +466,7 @@ API Key 包括以下两部分
 
 | 参数名称 | 是否必须 | 示例                      | 备注                                                         |
 | :------- | :------- | :------------------------ | :----------------------------------------------------------- |
-| filter   | 是       | %7B%22userId%22%3A+275%7D | 注意：     请求参数filter=%7B%22userId%22%3A+275%7D，值为URLEcode编码， 编码后 用大写 比如 %3a 需要 转换成 %3A     解码值为：{"userId":275}     其中             userId（int）：用户ID，                                            必须             contractId（int）：交易对ID，                                  非必须             side（int）：上下页数,                                               非必须             startDate（long）：开始时间戳,                                非必须             endDate（long）：结束时间戳,                                 非必须             pageNum（int）：当前页数,                                      非必须             pageSize（int）：页显示数量,                                    非必须 |
+| filter   | 是       | %7B%22userId%22%3A+275%7D | 注意：     请求参数filter=%7B%22userId%22%3A275%7D，值为URLEcode编码， 编码后 用大写 比如 %3a 需要 转换成 %3A     解码值为：{"userId":275}     其中             userId（int）：用户ID，                                            必须             contractId（int）：交易对ID，                                  非必须             side（int）：上下页数,                                               非必须             startDate（long）：开始时间戳,                                非必须             endDate（long）：结束时间戳,                                 非必须             pageNum（int）：当前页数,                                      非必须             pageSize（int）：页显示数量,                                    非必须 |
 
 
 
