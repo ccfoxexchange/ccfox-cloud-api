@@ -304,7 +304,7 @@ API Key 包括以下两部分
 
 ## 资产权益
 
-币种接口： https://apitest.ccfox.com/futureAsset/queryAccountEquity
+权益接口： https://apitest.ccfox.com/futureAsset/queryAccountEquity
 
 ### 基本信息
 
