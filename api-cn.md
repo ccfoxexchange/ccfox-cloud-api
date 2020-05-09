@@ -16,6 +16,10 @@
         - [基本信息](#基本信息)
         - [请求参数](#请求参数)
         - [返回数据](#返回数据)
+     - [资产权益](#资产权益)
+        - [基本信息](#基本信息)
+        - [请求参数](#请求参数)
+        - [返回数据](#返回数据)
     - [获取用户信息](#获取用户信息)
     - [子账号注册](#子账号注册)
         - [基本信息](#基本信息-1)
@@ -298,7 +302,51 @@ API Key 包括以下两部分
 | ├─ deliveryPriceInterval | number    | 必须     |        | 交割价计算间隔                                           |                   |
 | ├─ varietyId             | number    | 必须     |        | 品种ID，标的ID                                           |                   |
 
+## 资产权益
 
+币种接口： https://apitest.ccfox.com/futureAsset/queryAccountEquity
+
+### 基本信息
+
+**Path：** /futureAsset/queryAccountEquity
+
+**Method：** GET
+
+**接口描述：**
+
+### 请求参数
+### Query：
+
+| 参数名称 | 是否必须 | 示例                      | 备注                                                         |
+| :------- | :------- | :------------------------ | :----------------------------------------------------------- |
+| legalSymbol   | 是       | CNY | 法币标识，默认：CNY|
+
+### 返回数据
+
+| 名称                     | 类型      | 是否必须 | 默认值 | 备注                                                     | 其他信息          |
+| ------------------------ | --------- | -------- | ------ | -------------------------------------------------------- | ----------------- |
+| code             | number     | 必须   |        | 0：成功，其他失败 | |
+| msg              | string     | 必须   |        | 消息 | |
+| data             | object []  | 必须   |        | 数据集合 | |
+| ├─accountType    | number     | 必须   |        | 账户类型，1现货，2期货，5提币，10活动 | 合约云用户只有：期货账户：2|
+| ├─totalAccountEquity    | number     | 必须   ||账户总权益，即btc估值 | |
+| ├─simulationAvailableMargin    | number     | 必须   ||模拟币可用保证金 | |
+| ├─totalLegalValue    | object     | 必须   ||法币价值 | |
+| ├├─value    | number     | 必须   ||总法币价值 | |
+| ├├─symbol    | string     | 必须   ||法币标识 | |
+| ├─currencyAssetList    | object     | 必须   ||货币资产列表 | |
+| ├├─currencyId    | number     | 必须   ||货币ID | |
+| ├├─accountEquity    | number     | 必须   ||该币种账户权益 | |
+| ├├─floatProfitLoss    | number     | 必须   ||浮动盈亏 | |
+| ├├─availableMargin    | number     | 必须   ||可用保证金 | |
+| ├├─initMargin    | number     | 必须   ||持仓占用保证金 | |
+| ├├─currentCloseProfitLoss    | number     | 必须   ||当日已实现盈亏 | |
+| ├├─totalLeverageLevel    | number     | 必须   ||整体杠杆水平 | |
+| ├├─frozenForTrade    | number     | 必须   ||委托占用保证金，现货也有该字段 | |
+| ├├─available    | number     | 必须   ||可用余额，除期货现货外 | |
+| ├├─locked    | number     | 必须   ||锁定金额，除期货、现货外 | |
+| ├├─btcValuation    | number     | 必须   ||btc估值，除期货外账户有该字段 | |
+| ├├─totalBalance    | number     | 必须   ||账户余额，现货 | |
 
 ## 获取用户信息
 
